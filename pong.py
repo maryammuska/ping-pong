@@ -1,4 +1,4 @@
-import os
+
 import turtle
 
 wn = turtle.Screen()
@@ -26,12 +26,14 @@ paddle_b.penup()
 paddle_b.goto(350, 0)
 
 #Ball
-paddle_ball = turtle.Turtle()
-paddle_ball.speed(0)
-paddle_ball.shape("square")
-paddle_ball.color("white")
-paddle_ball.penup()
-paddle_ball.goto(0, 0)
+ball = turtle.Turtle()
+ball.speed(0)
+ball.shape("square")
+ball.color("white")
+ball.penup()
+ball.goto(0, 0)
+ball.dx = 2 #every time our ball moves, it goes by 2 pixels
+ball.dy = 2
 
 #functions
 def paddle_a_up():
@@ -64,3 +66,7 @@ wn.onkeypress(paddle_b_down, "Down")
 #main game loops
 while True:
     wn.update()
+
+    # Move the Ball
+    ball.setx(ball.xcor() + ball.dx)
+    ball.sety(ball.ycor() + ball.dy)
