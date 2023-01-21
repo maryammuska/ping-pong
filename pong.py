@@ -33,7 +33,7 @@ ball.color("white")
 ball.penup()
 ball.goto(0, 0)
 ball.dx = 2 #every time our ball moves, it goes by 2 pixels
-ball.dy = 2
+ball.dy = -2
 
 #functions
 def paddle_a_up():
@@ -70,3 +70,20 @@ while True:
     # Move the Ball
     ball.setx(ball.xcor() + ball.dx)
     ball.sety(ball.ycor() + ball.dy)
+
+    # Border Checking
+    if ball.ycor() > 290:
+        ball.sety(290)
+        ball.dy *= -1
+
+    if ball.ycor() < -290:
+        ball.sety(-290)
+        ball.dy *= -1
+
+    if ball.xcor() > 390:
+        ball.goto(0, 0) 
+        ball.dx *= -1
+
+    if ball.xcor() < -390:
+        ball.goto(0, 0) 
+        ball.dx *= -1
